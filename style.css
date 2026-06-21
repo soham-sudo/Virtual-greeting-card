@@ -1,0 +1,244 @@
+/* ============================================================
+   Happy Father's Day — e-card styles
+   Palette: ink #1F2438, dusk #4B3F5E, amber #E8A33D,
+            paper #F6EFE2, rust #B5532C
+   Type: Fraunces (display), Inter (body/UI), Caveat (note)
+   ============================================================ */
+
+:root {
+  --ink: #1F2438;
+  --dusk: #4B3F5E;
+  --amber: #E8A33D;
+  --paper: #F6EFE2;
+  --rust: #B5532C;
+  --text-on-dark: rgba(255,255,255,0.92);
+  --text-on-dark-soft: rgba(255,255,255,0.66);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---------- Eyebrow label ---------- */
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+}
+.eyebrow.center { text-align: center; display: block; margin-bottom: 1.5rem; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, rgba(31,36,56,0.30) 0%, rgba(31,36,56,0.55) 55%, rgba(31,36,56,0.90) 100%),
+    var(--bg-image, none),
+    linear-gradient(155deg, var(--ink) 0%, var(--dusk) 55%, var(--rust) 145%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 26rem; }
+
+.hero-content .eyebrow { display: block; margin-bottom: 1rem; }
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(2.6rem, 9vw, 4rem);
+  line-height: 1.05;
+  color: var(--text-on-dark);
+  letter-spacing: -0.01em;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 2.5rem;
+  background: var(--text-on-dark-soft);
+  overflow: hidden;
+}
+.scroll-cue span {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--amber);
+  animation: scrollDown 1.8s ease-in-out infinite;
+}
+@keyframes scrollDown {
+  0% { top: -100%; }
+  60% { top: 100%; }
+  100% { top: 100%; }
+}
+
+/* ---------- Note / letter section ---------- */
+.note-section {
+  background: var(--ink);
+  padding: 5rem 1.5rem 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.note-card {
+  position: relative;
+  background: var(--paper);
+  color: #2b2620;
+  max-width: 28rem;
+  width: 100%;
+  padding: 3rem 2rem 2.5rem;
+  border-radius: 2px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.45);
+  transform: rotate(-0.6deg);
+}
+
+/* signature element: folded paper corner */
+.note-fold {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 48%, #d8cdb6 50%, #c4b89c 100%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  box-shadow: -6px 6px 14px -8px rgba(0,0,0,0.35);
+}
+
+.note-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.55rem;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+/* ---------- Video section ---------- */
+.video-section {
+  background: var(--ink);
+  padding: 1rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-frame {
+  width: 100%;
+  max-width: 28rem;
+  background: var(--paper);
+  padding: 0.6rem;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+}
+
+.video-frame video {
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--dusk);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* ---------- Footer setup note (delete once assets are swapped) ---------- */
+.setup-note {
+  background: var(--ink);
+  border-top: 1px dashed rgba(246,239,226,0.25);
+  padding: 1.5rem 1.5rem 3rem;
+}
+.setup-note p {
+  max-width: 28rem;
+  margin: 0 auto;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-on-dark-soft);
+  text-align: center;
+}
+.setup-note code {
+  background: rgba(246,239,226,0.1);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  color: var(--amber);
+  font-size: 0.75rem;
+}
+
+/* ---------- Audio toggle ---------- */
+.audio-toggle {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--paper);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px -6px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.audio-toggle:hover { transform: scale(1.06); }
+.audio-toggle:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+.audio-toggle.playing { background: var(--amber); }
+.audio-toggle.playing .icon-note { animation: pulse 1.4s ease-in-out infinite; }
+.audio-toggle.unavailable { opacity: 0.35; cursor: default; }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .scroll-cue span { animation: none; }
+  .audio-toggle.playing .icon-note { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+@media (min-width: 640px) {
+  .hero-title { font-size: clamp(3.2rem, 7vw, 4.5rem); }
+}

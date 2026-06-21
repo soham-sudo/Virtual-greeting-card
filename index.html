@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F2438">
+<title>Happy Father's Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BACKGROUND MUSIC: replace assets/music.mp3 with your track (mp3, ideally under ~5MB) -->
+  <audio id="bgMusic" loop preload="none">
+    <source src="assets/renditionAudio.m3u8" type="audio/mpeg">
+  </audio>
+
+  <button id="audioToggle" class="audio-toggle" aria-label="Play background music" aria-pressed="false" title="Play background music">
+    <svg class="icon-note" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M9 18V5l11-2v13" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="17" cy="16" r="3"/>
+    </svg>
+  </button>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-bg" style="--bg-image: url('assets/background.jpg');"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">For Papa, with love</p>
+        <h1 class="hero-title">Happy<br>Father&rsquo;s Day</h1>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="note-section">
+      <div class="note-card reveal">
+        <div class="note-fold" aria-hidden="true"></div>
+        <p class="note-text" id="messageText">Dear Papa,
+
+Replace this with what you actually want to say — a memory, something he taught you, or just a plain "thank you." That's always enough.
+
+With love,
+Soham</p>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <p class="eyebrow center reveal">A little something for you</p>
+      <div class="video-frame reveal">
+        <video id="mainVideo" poster="assets/poster.jpg" controls playsinline preload="metadata">
+          <source src="assets/master.m3u8" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <footer class="setup-note">
+      <p><strong>Before you share this →</strong> drop in your own <code>assets/video.mp4</code>, <code>assets/music.mp3</code> and <code>assets/background.jpg</code> (keep these exact filenames), edit the message above, then delete this note.</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
